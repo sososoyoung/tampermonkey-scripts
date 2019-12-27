@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         Add download count for npm search
+// @name         Add downloads count for npm search results
 // @namespace    http://tampermonkey.net/
 // @version      0.1.0
-// @description  Add download count for npm search
+// @description  Add downloads count for npm search results
 // @author       sososoyoung
 // @connect      api.npmjs.org
 // @include      *://www.npmjs.com/
