@@ -58,14 +58,14 @@
     desDom.html(desDom.html() + " • Weekly Downloads: " + count);
   }
 
-  const splitCount = [1000 * 1000 * 10, 1000 * 10];
+  const splitCount = [1000 * 1000, 1000];
   async function addDownloadCount(section) {
     const name = getPkgName(section);
     let count = await getDownloadCountByName(name);
-    if (count > splitCount[0]) {
+    if (count > splitCount[0] * 10) {
       // > 10M
       count = (count / splitCount[0]).toFixed(2) + "M";
-    } else if (count > splitCount[1]) {
+    } else if (count > splitCount[1] * 10) {
       // > 10K
       count = (count / splitCount[1]).toFixed(2) + "K";
     }
