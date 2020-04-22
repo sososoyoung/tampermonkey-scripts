@@ -1,0 +1,23 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "commonjs": true
+  },
+  // "parserOptions": {
+  //   "ecmaFeatures": {
+  //     "experimentalObjectRestSpread": true,
+  //     "arrowFunctions": true,
+  //     "classes": true,
+  //     "modules": true,
+  //     "legacyDecorators": true,
+  //     "defaultParams": true
+  //   },
+  //   "sourceType": "module"
+  // },
+  "globals": {
+    "GM": false
+  },
+  "rules": {}
+}
