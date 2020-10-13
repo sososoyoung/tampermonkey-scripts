@@ -20,7 +20,7 @@
   let href = "";
   let packageName = "";
   let checkWorkId = Date.now();
-  const selecters = {
+  const selectors = {
     des: ".w-80 .black-80 .black-50",
   };
 
@@ -57,12 +57,12 @@
   }
 
   function setCount(section, count) {
-    const desDom = $(section).find(selecters.des);
+    const desDom = $(section).find(selectors.des);
     desDom.html(desDom.html() + " • Weekly Downloads: " + count);
   }
 
   function checkHadCount(section) {
-    const desDom = $(section).find(selecters.des);
+    const desDom = $(section).find(selectors.des);
     return /Weekly Downloads/.test(desDom.html());
   }
 
@@ -93,7 +93,11 @@
         GM.log("[d-count] updateCounts...");
         for (let i = 0; i < sections.length; i++) {
           if (id === checkWorkId && !checkHadCount(sections[i])) {
-            await addDownloadCount(sections[i]);
+            if (i % 5 === 0) {
+              await addDownloadCount(sections[i]);
+            } else {
+              addDownloadCount(sections[i]);
+            }
           } else {
             GM.log("[d-count] continue.");
             continue;
@@ -110,7 +114,7 @@
     }
   }
 
-  function parseSeacrh(search = "") {
+  function parseSearch(search = "") {
     return search
       .split("&")
       .map((i = "") => i.split("="))
@@ -124,7 +128,7 @@
 
   function checkUrl() {
     if (href !== window.location.href && window.location.search) {
-      const newQ = parseSeacrh(window.location.search.substr(1)).q;
+      const newQ = parseSearch(window.location.search.substr(1)).q;
       GM.log("[d-count] url had changed!", newQ, packageName);
       packageName = newQ;
       checkWorkId = Date.now();
